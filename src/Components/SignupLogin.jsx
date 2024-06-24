@@ -29,6 +29,7 @@ function SignupLogin() {
 
   const handleLogin = async () => {
     const data = await login(email, password);
+    // console.log("qwertyuiop", data)
     localStorage.setItem('token', data.token);
     localStorage.setItem('expiresIn', data.expiresIn);
     navigate('/time-left');

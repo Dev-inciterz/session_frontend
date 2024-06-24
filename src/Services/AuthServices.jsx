@@ -9,6 +9,7 @@ const signup = async (email, password) => {
 
 const login = async (email, password) => {
     const response = await axios.post(`${API_URL}/login`, { email, password });
+    // console.log("hgchvghcjh", response)
     return response.data;
 };
 
