@@ -48,7 +48,6 @@ function TimeLeft() {
       // Handle logout failure if needed
       toast.error(`${error}`)
     } finally {
-      toast.error("Logout failed. Please try again."); // Show error toast
       setIsLoading(false); // Stop loading indicator after logout completes
     }
   };
