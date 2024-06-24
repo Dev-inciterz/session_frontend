@@ -196,3 +196,28 @@ form .btn input[type="submit"]{
 
 
 } */
+
+
+
+
+/* FOR LOGOUT BUTTON  */
+
+.logoutbtn {
+  background: linear-gradient(to bottom right, #8B0A1A, #660000); /* Darker red gradient from top-left to bottom-right on hover */
+
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logoutbtn:hover {
+  background: linear-gradient(to right, #FF3737, #FF0000); /* Red gradient from left to right */
+
+}

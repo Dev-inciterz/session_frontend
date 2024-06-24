@@ -13,4 +13,19 @@ const login = async (email, password) => {
     return response.data;
 };
 
-export { signup, login };
+const logout = async (token) => {
+    try {
+        const response = await axios.post(`${API_URL}/logout`, {}, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error logging out:", error);
+        throw error;
+    }
+};
+
+
+export { signup, login, logout };

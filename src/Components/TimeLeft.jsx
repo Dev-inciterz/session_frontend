@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Plans from "./Plans";
 
+import { logout} from '../Services/AuthServices';
+import { useNavigate } from 'react-router-dom';
+
 function TimeLeft() {
   const [timeLeft, setTimeLeft] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedExpiresIn = localStorage.getItem("expiresIn");
@@ -19,6 +23,21 @@ function TimeLeft() {
       return () => clearInterval(interval);
     }
   }, []);
+
+  const handleLogout = async () => {
+    console.warn("Logout initityed")
+    const token = localStorage.getItem('token');
+    console.error("token ila", token)
+
+    try {
+        await logout(token);
+        localStorage.removeItem('token');
+        localStorage.removeItem('expiresIn');
+        navigate('/login');  // or any other route you want to navigate to after logout
+    } catch (error) {
+        console.error("Logout failed", error);
+    }
+};
 
   function getTimeLeft(tokenExpireString) {
     const tokenExpireDate = new Date(tokenExpireString);
@@ -52,6 +71,10 @@ function TimeLeft() {
       </div>
 
       <Plans />
+
+      <div className="logoutbtnsect">
+        <button onClick={handleLogout} className="logoutbtn">Logout</button>
+      </div>
     </div>
   );
 }
