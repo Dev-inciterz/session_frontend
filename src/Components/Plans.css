@@ -1,0 +1,122 @@
+.internet-plans {
+    width: 90vw;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  }
+  
+  .internet-plans h1 {
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  
+  .plans {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+  .plan {
+    width: 33%;
+    margin: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .plan h2 {
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .pricing {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .pricing .dollar {
+    font-size: 14px;
+    margin-right: 5px;
+  }
+  
+  .planbtns {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .planbtns:hover {
+    background-color: #3e8e41;
+  }
+  
+  .features {
+    margin-top: 20px;
+  }
+  
+  .features-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .features li {
+    margin-bottom: 10px;
+  }
+  
+  .features li i {
+    font-size: 14px;
+    margin-right: 10px;
+    color: #4CAF50;
+  }
+  
+  .info-icon {
+    font-size: 14px;
+    margin-left: 10px;
+    color: #666;
+    cursor: pointer;
+  }
+  
+  .info-icon:hover {
+    color: #4CAF50;
+  }
+
+
+
+
+
+
+
+.timelefthead{
+
+  color: #fff;
+}
+
+.timmeleftfull .timeleftfirst{
+
+
+  height: 10vh;
+  /* margin: 100px auto 200px auto; */
+  color: #fff;
+  align-self: center;
+
+
+}
