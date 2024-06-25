@@ -1,19 +1,49 @@
-import React from 'react';
-import './Plans.css'
+import React, { useState } from "react";
+import "./Plans.css";
+
+import { SettingCustomExpiry } from "../Services/AuthServices";
+
+import { toast } from 'react-toastify';
+import Loader from "./Loader";
 
 const Plans = () => {
+
+
+  const [isLoading, setIsLoading] = useState(false); // New state for loading indicator
+
+  const BuyPlan = async (days) => {
+    try {
+      setIsLoading(true)
+      const token = localStorage.getItem("token");
+      // Call the async function and wait for it to complete
+      const data = await SettingCustomExpiry(days, token); // Assuming SettingCustomExpiry returns an object with token and expiresIn
+  
+      // Clear previous token and expiresIn
+      localStorage.removeItem('token');
+      localStorage.removeItem('expiresIn');
+  
+      // Set new token and expiresIn
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('expiresIn', data.expiresIn);
+      toast.success("Plan Buying Successfull");
+    } catch (error) {
+      console.log("Error occurred while buying plan:", error);
+      toast.error("Please try Again later after some time:" );
+    }
+  };
   return (
     <div className="internet-plans">
       <h1>Choose how fast you want to go</h1>
+      {isLoading && <Loader />} 
       <div className="plans">
         <div className="plan">
-          <h2>300Mbps speed</h2>
+          <h2>300Mbps speed - 30 days</h2>
           <p>Limited availability/areas.</p>
           <div className="pricing">
             <span className="dollar">$</span>
             Select Shop now to see pricing and deals available at your address.
           </div>
-          <button className='planbtns'>Shop now</button>
+          <button className="planbtns" onClick={() => BuyPlan(30)} >Buy now</button>
           <div className="features">
             <h3 className="features-title">Features & benefits</h3>
             <ul>
@@ -36,13 +66,13 @@ const Plans = () => {
           </div>
         </div>
         <div className="plan">
-          <h2>500Mbps speed</h2>
+          <h2>500Mbps speed - 20 days</h2>
           <p>Limited availability/areas.</p>
           <div className="pricing">
             <span className="dollar">$</span>
             Select Shop now to see pricing and deals available at your address.
           </div>
-          <button className='planbtns'>Shop now</button>
+          <button className="planbtns">Buy now</button>
           <div className="features">
             <h3 className="features-title">Features & benefits</h3>
             <ul>
@@ -65,13 +95,13 @@ const Plans = () => {
           </div>
         </div>
         <div className="plan">
-          <h2>Up to 1 GIG speed</h2>
+          <h2>Up to 1 GIG speed - 10 days</h2>
           <p>Limited availability/areas.</p>
           <div className="pricing">
             <span className="dollar">$</span>
             Select Shop now to see pricing and deals available at your address.
           </div>
-          <button className='planbtns'>Shop now</button>
+          <button className="planbtns">Buy now</button>
           <div className="features">
             <h3 className="features-title">Features & benefits</h3>
             <ul>
