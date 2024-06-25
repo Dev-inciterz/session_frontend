@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const API_URL = 'https://session-backend-0aoq.onrender.com/api/auth/';
-const API_URL = 'http://localhost:9000/api/auth/';
+const API_URL = 'https://session-backend-0aoq.onrender.com/api/auth/';
+// const API_URL = 'http://localhost:9000/api/auth/';
 const signup = async (email, password) => {
     const response = await axios.post(`${API_URL}/signup`, { email, password });
     return response.data;
