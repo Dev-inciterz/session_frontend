@@ -8,7 +8,11 @@ import { toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 
+
+
 function TimeLeft() {
+
+
   const [timeLeft, setTimeLeft] = useState(null);
   const [isLoading, setIsLoading] = useState(false); // State for loading indicator
   const navigate = useNavigate();
@@ -28,6 +32,8 @@ function TimeLeft() {
       return () => clearInterval(interval);
     }
   }, []);
+
+
 
   const handleLogout = async () => {
     setIsLoading(true); // Start loading indicator
