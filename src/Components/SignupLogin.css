@@ -215,3 +215,51 @@ form .btn input[type="submit"]{
   opacity: 0.5; /* Adjust the opacity value as needed */
   pointer-events: none; /* Prevent interaction with faded content */
 }
+
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  
+
+  .wrapper{
+
+    width: 90vw;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+
+
+  /* FOR PLANS */
+
+  .plans{
+
+    flex-direction: column;
+  }
+
+  .plan{
+
+    width: 100% !important;
+  }
+
+  .timmeleftfull .timeleftfirst {
+    height: auto !important;
+ padding: 10px;
+ margin: 10px;
+}
+
+.logoutbtnsect{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logoutbtn{
+
+  margin: 10px;
+}
+
+}
