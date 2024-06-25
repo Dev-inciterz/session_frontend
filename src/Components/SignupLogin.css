@@ -19,13 +19,13 @@ html,body{
 }
 .wrapper{
   overflow: hidden;
-  max-width: 390px;
   background: #fff;
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
 
   margin: 20px auto;
+  width: 30vw;
 }
 .wrapper .title-text{
   display: flex;
@@ -187,17 +187,6 @@ form .btn input[type="submit"]{
 }
 
 
-/* 
-.loginonform{
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-
-} */
-
-
 
 
 /* FOR LOGOUT BUTTON  */
@@ -221,8 +210,6 @@ form .btn input[type="submit"]{
   background: linear-gradient(to right, #FF3737, #FF0000); /* Red gradient from left to right */
 
 }
-
-
 
 .allinloginsignup.faded-content {
   opacity: 0.5; /* Adjust the opacity value as needed */

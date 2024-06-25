@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState } from "react";
 import "./Plans.css";
 
 import { SettingCustomExpiry } from "../Services/AuthServices";
@@ -34,6 +34,9 @@ const Plans = () => {
       toast.error("Failed to buy plan. Please try again later.");
     }
   };
+
+
+
   
   return (
     <div className="internet-plans">
@@ -109,7 +112,7 @@ const Plans = () => {
             <span className="dollar">$</span>
             Select Shop now to see pricing and deals available at your address.
           </div>
-          <button className="planbtns" onClick={() => BuyPlan(10)}>
+          <button className="planbtns" onClick={() => BuyPlan(10)} >
             Buy now
           </button>
           <div className="features">

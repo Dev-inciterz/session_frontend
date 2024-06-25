@@ -1,30 +1,25 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { signup, login } from '../Services/AuthServices';
-import Loader from './Loader';
-import Plans from './Plans';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { signup, login } from "../Services/AuthServices";
+import Loader from "./Loader";
 
-import './SignupLogin.css';
+import "./SignupLogin.css";
 
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 function SignupLogin() {
-
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const [formType, setFormType] = useState('login');
+  const [formType, setFormType] = useState("login");
   const [isLoading, setIsLoading] = useState(false); // New state for loading indicator
-
-  
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true); // Start loading indicator
-    if (formType === 'signup') {
+    if (formType === "signup") {
       await handleSignup();
     } else {
       await handleLogin();
@@ -32,28 +27,26 @@ function SignupLogin() {
     setIsLoading(false); // Stop loading indicator after submission completes
   };
 
-
   const handleSignup = async () => {
     try {
       const data = await signup(email, password);
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('expiresIn', data.expiresIn);
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("expiresIn", data.expiresIn);
       toast.success("Signup successful"); // Show success toast
-      navigate('/time-left');
+      navigate("/time-left");
     } catch (error) {
       console.error("Signup error:", error);
       toast.error("Signup failed. Please try again."); // Show error toast
     }
   };
 
-
   const handleLogin = async () => {
     try {
       const data = await login(email, password);
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('expiresIn', data.expiresIn);
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("expiresIn", data.expiresIn);
       toast.success("Login successful"); // Show success toast
-      navigate('/time-left');
+      navigate("/time-left");
     } catch (error) {
       console.error("Login error:", error);
       toast.error("Login failed. Please check your credentials."); // Show error toast
@@ -61,11 +54,11 @@ function SignupLogin() {
   };
 
   const handleSignupClick = () => {
-    setFormType('signup');
+    setFormType("signup");
   };
 
   const handleLoginClick = () => {
-    setFormType('login');
+    setFormType("login");
   };
 
   const handleSignupLinkClick = (e) => {
@@ -74,12 +67,14 @@ function SignupLogin() {
   };
 
   return (
-    <div className={`allinloginsignup ${isLoading ? 'faded-content' : ''}`}>
+    <div className={`allinloginsignup ${isLoading ? "faded-content" : ""}`}>
       <div className="loginonform">
         <div className="wrapper">
           <div className="title-text">
-            <div className={`title ${formType === 'login' ? 'login' : 'signup'}`}>
-              {formType === 'login' ? 'Login Form' : 'Signup Form'}
+            <div
+              className={`title ${formType === "login" ? "login" : "signup"}`}
+            >
+              {formType === "login" ? "Login Form" : "Signup Form"}
             </div>
           </div>
           <div className="form-container">
@@ -88,25 +83,34 @@ function SignupLogin() {
                 type="radio"
                 name="slide"
                 id="login"
-                checked={formType === 'login'}
+                checked={formType === "login"}
                 onChange={handleLoginClick}
               />
               <input
                 type="radio"
                 name="slide"
                 id="signup"
-                checked={formType === 'signup'}
+                checked={formType === "signup"}
                 onChange={handleSignupClick}
               />
-              <label htmlFor="login" className="slide login" onClick={handleLoginClick}>
+              <label
+                htmlFor="login"
+                className="slide login"
+                onClick={handleLoginClick}
+              >
                 Login
               </label>
-              <label htmlFor="signup" className="slide signup" onClick={handleSignupClick}>
+              <label
+                htmlFor="signup"
+                className="slide signup"
+                onClick={handleSignupClick}
+              >
                 Signup
               </label>
               <div className="slider-tab"></div>
             </div>
-            {isLoading && <Loader />} {/* Render Loader when isLoading is true */}
+            {isLoading && <Loader />}{" "}
+            {/* Render Loader when isLoading is true */}
             <div className="form-inner">
               <form onSubmit={handleFormSubmit}>
                 <div className="field">
@@ -127,7 +131,7 @@ function SignupLogin() {
                     required
                   />
                 </div>
-                {formType === 'signup' && (
+                {formType === "signup" && (
                   <div className="field">
                     <input
                       type="password"
@@ -139,18 +143,31 @@ function SignupLogin() {
                 )}
                 <div className="field btn">
                   <div className="btn-layer"></div>
-                  <input type="submit" value={formType === 'login' ? 'Login' : 'Signup'} />
+                  <input
+                    type="submit"
+                    value={formType === "login" ? "Login" : "Signup"}
+                  />
                 </div>
-                {formType === 'login' && (
+                {formType === "login" && (
                   <div className="pass-link">
                     <a href="/">Forgot password?</a>
                   </div>
                 )}
                 <div className="signup-link">
-                  {formType === 'login' ? (
-                    <span>Not a member? <a href="/" onClick={handleSignupLinkClick}>Signup now</a></span>
+                  {formType === "login" ? (
+                    <span>
+                      Not a member?{" "}
+                      <a href="/" onClick={handleSignupLinkClick}>
+                        Signup now
+                      </a>
+                    </span>
                   ) : (
-                    <span>Already have an account? <a href="/" onClick={handleLoginClick}>Login</a></span>
+                    <span>
+                      Already have an account?{" "}
+                      <a href="/" onClick={handleLoginClick}>
+                        Login
+                      </a>
+                    </span>
                   )}
                 </div>
               </form>
@@ -158,9 +175,6 @@ function SignupLogin() {
           </div>
         </div>
       </div>
-
-
-      <Plans />
     </div>
   );
 }
