@@ -5,30 +5,33 @@ import { SettingCustomExpiry } from "../Services/AuthServices";
 
 import { toast } from 'react-toastify';
 import Loader from "./Loader";
+import { useNavigate } from "react-router-dom";
 
 const Plans = () => {
+  const navigate = useNavigate()
 
 
   const [isLoading, setIsLoading] = useState(false); // New state for loading indicator
 
   const BuyPlan = async (days) => {
     try {
-      setIsLoading(true)
+      setIsLoading(true);
       const token = localStorage.getItem("token");
-      // Call the async function and wait for it to complete
       const data = await SettingCustomExpiry(days, token); // Assuming SettingCustomExpiry returns an object with token and expiresIn
   
-      // Clear previous token and expiresIn
-      localStorage.removeItem('token');
-      localStorage.removeItem('expiresIn');
-  
-      // Set new token and expiresIn
+      // Update localStorage with new token and expiresIn
       localStorage.setItem('token', data.token);
       localStorage.setItem('expiresIn', data.expiresIn);
-      toast.success("Plan Buying Successfull");
+  
+      setIsLoading(false);
+      toast.success("Plan Buying Successful");
+      
+      // Navigate after updating localStorage
+      navigate('/time-left');
     } catch (error) {
       console.log("Error occurred while buying plan:", error);
-      toast.error("Please try Again later after some time:" );
+      setIsLoading(false);
+      toast.error("Failed to buy plan. Please try again later.");
     }
   };
   return (
@@ -72,7 +75,7 @@ const Plans = () => {
             <span className="dollar">$</span>
             Select Shop now to see pricing and deals available at your address.
           </div>
-          <button className="planbtns">Buy now</button>
+          <button className="planbtns" onClick={() => BuyPlan(20)} >Buy now</button>
           <div className="features">
             <h3 className="features-title">Features & benefits</h3>
             <ul>
@@ -101,7 +104,7 @@ const Plans = () => {
             <span className="dollar">$</span>
             Select Shop now to see pricing and deals available at your address.
           </div>
-          <button className="planbtns">Buy now</button>
+          <button className="planbtns" onClick={() => BuyPlan(10)} >Buy now</button>
           <div className="features">
             <h3 className="features-title">Features & benefits</h3>
             <ul>
